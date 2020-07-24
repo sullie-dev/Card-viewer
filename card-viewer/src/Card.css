@@ -1,0 +1,12 @@
+.Card{
+    width: 570px;
+    height: 270px;
+    padding: 2em;
+    background-color: aquamarine;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.Card-Number{
+    margin: 2.2em auto;
+}
