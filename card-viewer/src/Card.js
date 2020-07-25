@@ -11,43 +11,60 @@ class Card extends Component {
   }
 
   handleClick(evt) {
-    console.log(this.state.isViewable);
+    evt.preventDefault();
     this.setState({ isViewable: !this.state.isViewable });
   }
   render() {
+    const lNumSorted = [...this.props.cardInfo.lNum].map((d, i) => (i) % 4 == 0 ? ' ' + d : d).join('').trim()
+
     return (
-      <div>
+      <div className="Card-Parent">
         {this.state.isViewable ? (
           <div className="Card">
-            <h2 className="Card-Number">{this.props.cardInfo.lNum}</h2>
-            <h3> Exp Date: {this.props.cardInfo.expDate}</h3>
-            <h3>{this.props.cardInfo.cvc}</h3>
-            <div>
-              <h3>{this.props.cardInfo.fName}</h3>
-              <h3>(this.props.cardInfo.lName}</h3>
+            <h2 className="Card-Number">{lNumSorted}</h2>
+            <h3 className="Card-eDate">
+              {" "}
+              Exp Date: {this.props.cardInfo.expDate}
+            </h3>
+            <h3 className="Card-CVC">CVC: {this.props.cardInfo.cvc}</h3>
+            <div className="Card-Name">
+              <h3>
+                <span>{this.props.cardInfo.fName}</span>{" "}
+                <span>{this.props.cardInfo.lName}</span>
+              </h3>
             </div>
           </div>
         ) : (
           <div className="Card">
             <h2 className="Card-Number">
-              ************{this.props.cardInfo.last4}
+              **** **** **** {this.props.cardInfo.last4}
             </h2>
-            <h3>Exp Date: {this.props.cardInfo.expDate}</h3>
-            <h3>***</h3>
-            <div>
-              <h3>{this.props.cardInfo.fName}</h3>
-              <h3>(this.props.cardInfo.lName}</h3>
+            <h3 className="Card-eDate">
+              Exp Date: {this.props.cardInfo.expDate}
+            </h3>
+            <h3 className="Card-CVC">CVC:***</h3>
+            <div className="Card-Name">
+              <h3>
+                <span>{this.props.cardInfo.fName}</span>{" "}
+                <span>{this.props.cardInfo.lName}</span>
+              </h3>
             </div>
           </div>
         )}
         {this.state.isViewable ? (
-          <button onClick={this.handleClick}>
-            <i className="far fa-eye-slash"></i>
-          </button>
+          <span className="Visable">
+            <h3>Hide card details</h3>{" "}
+            <button onClick={this.handleClick}>
+              <i className="far fa-eye-slash fa-2x"></i>
+            </button>
+          </span>
         ) : (
-          <button onClick={this.handleClick}>
-            <i className="far fa-eye"></i>
-          </button>
+          <span className="Visable">
+            <h3>Show card details</h3>{" "}
+            <button onClick={this.handleClick}>
+              <i className="far fa-eye fa-2x"></i>
+            </button>
+          </span>
         )}
       </div>
     );
