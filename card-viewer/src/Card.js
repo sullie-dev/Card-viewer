@@ -42,7 +42,7 @@ class Card extends Component {
             <h3 className="Card-eDate">
               Exp Date: {this.props.cardInfo.expDate}
             </h3>
-            <h3 className="Card-CVC">CVC:***</h3>
+            <h3 className="Card-CVC">CVC: ***</h3>
             <div className="Card-Name">
               <h3>
                 <span>{this.props.cardInfo.fName}</span>{" "}
