@@ -15,7 +15,7 @@ class Card extends Component {
     this.setState({ isViewable: !this.state.isViewable });
   }
   render() {
-    const lNumSorted = [...this.props.cardInfo.lNum].map((d, i) => (i) % 4 == 0 ? ' ' + d : d).join('').trim()
+    const lNumSorted = [...this.props.cardInfo.lNum].map((d, i) => (i) % 4 === 0 ? ' ' + d : d).join('').trim()
 
     return (
       <div className="Card-Parent">
